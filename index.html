@@ -51,16 +51,29 @@
 
         .container {
             text-align: center;
-            padding: 10px;
-            max-width: 1200px;
-            width: 98%;
+            padding: 8px;
+            max-width: 460px;
+            width: 92%;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .result-container {
+            background: var(--card-bg);
+            padding: 8px;
+            border-radius: 8px;
+            margin: 5px 0;
+            box-shadow: var(--card-shadow);
+            border: 2px solid var(--start-button-bg);
+            width: calc(100% - 20px);
         }
 
         .lists-container {
             display: flex;
-            gap: 20px;
-            margin: 10px 0;
+            gap: 5px;
+            margin: 5px 0;
+            width: 100%;
         }
 
         .list-column {
@@ -69,32 +82,66 @@
             padding: 8px;
             border-radius: 8px;
             box-shadow: var(--card-shadow);
+            min-width: 0;
+            width: calc(50% - 10px);
         }
 
-        .result-container {
-            background: var(--card-bg);
-            padding: 20px;
-            border-radius: 12px;
-            margin: 10px 0 20px 0;
-            box-shadow: var(--card-shadow);
-            border: 2px solid var(--start-button-bg);
+        .title-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .title-left {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        h1 {
+            font-size: 1.5em;
+            margin: 0;
+        }
+
+        .version-tag {
+            font-size: 0.7em;
+            font-weight: 300;
+            opacity: 0.8;
+            color: var(--text-color);
+            padding-bottom: 2px;
+        }
+
+        .date-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9em;
+            color: var(--text-color);
+        }
+
+        .data-io-container {
+            width: 100%;
+            margin-top: 12px;
+            text-align: center;
         }
 
         #result {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 20px;
-            font-size: 2.8em;
-            margin: 15px 0;
-            min-height: 100px;
+            gap: 8px;
+            font-size: 1.8em;
+            margin: 8px 0;
+            min-height: 55px;
             font-weight: bold;
         }
 
         .name-list {
             min-height: 120px;
-            max-height: 250px;
-            padding: 8px;
+            max-height: 240px;
+            padding: 4px;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 4px;
@@ -105,7 +152,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 4px 6px;
+            padding: 3px 6px;
             margin: 2px 0;
             background: var(--item-bg);
             color: var(--text-color);
@@ -138,30 +185,146 @@
         }
 
         .add-name-container {
-            margin-top: 8px;
+            margin-top: 6px;
             display: flex;
-            gap: 8px;
+            gap: 4px;
+            align-items: center;
         }
 
         .add-name-input {
-            flex: 1;
-            padding: 6px;
+            width: 120px;
+            padding: 6px 8px;
             border: 1px solid var(--border-color);
             border-radius: 4px;
             background: var(--card-bg);
             color: var(--text-color);
-            font-size: 13px;
+            font-size: 0.9em;
+        }
+
+        .add-name-input:focus {
+            outline: none;
+            border-color: var(--start-button-bg);
+        }
+
+        .upload-btn {
+            padding: 6px;
+            width: 28px;
+            height: 28px;
+            font-size: 0.9em;
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.7;
+        }
+
+        .upload-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .upload-btn:hover {
+            border-color: var(--start-button-bg);
+            background-color: var(--item-hover);
+            opacity: 1;
+        }
+
+        .upload-btn:hover svg {
+            fill: var(--start-button-bg);
         }
 
         .add-btn {
-            padding: 6px 12px;
-            background: var(--start-button-bg);
+            padding: 6px;
+            width: 28px;
+            height: 28px;
+            font-size: 1em;
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .add-btn:hover {
+            border-color: var(--start-button-bg);
+            background-color: var(--item-hover);
+        }
+
+        .roll-button {
+            padding: 8px 20px;
+            font-size: 1em;
+            background-color: var(--start-button-bg);
             color: #000000;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             font-weight: bold;
-            font-size: 13px;
+            transition: background-color 0.3s ease;
+        }
+
+        .roll-button:hover {
+            background-color: var(--start-button-hover);
+        }
+
+        .roll-button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .reset-button {
+            padding: 5px 14px;
+            font-size: 0.9em;
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        .reset-button:hover {
+            background-color: var(--item-hover);
+        }
+
+        .move-selected-btn {
+            padding: 6px 12px;
+            margin-top: 8px;
+            font-size: 0.9em;
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            opacity: 0.8;
+        }
+
+        .move-selected-btn:hover {
+            border-color: var(--start-button-bg);
+            background-color: var(--item-hover);
+            opacity: 1;
+        }
+
+        .buttons {
+            gap: 10px;
+            margin-top: 6px;
         }
 
         .theme-switch {
@@ -201,44 +364,14 @@
             display: none;
         }
 
-        .title-container {
-            display: flex;
-            align-items: baseline;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 15px;
-        }
-
-        h1 {
-            font-size: 1.8em;
-            margin: 0;
-        }
-
-        .version-tag {
-            font-size: 0.7em;
-            font-weight: 300;
-            opacity: 0.8;
-            color: var(--text-color);
-        }
-
-        .date-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 5px;
-            font-size: 0.9em;
-            color: var(--text-color);
-        }
-
         .festival {
             color: var(--start-button-bg);
             font-weight: bold;
         }
 
         h3 {
-            margin: 8px 0;
-            font-size: 1.1em;
+            margin: 6px 0;
+            font-size: 1em;
         }
 
         .avatar {
@@ -250,8 +383,8 @@
         }
 
         .result-avatar {
-            width: 60px;
-            height: 60px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             object-fit: cover;
             display: none;
@@ -283,15 +416,6 @@
             height: 100%;
         }
 
-        .upload-btn {
-            padding: 8px 16px;
-            background: var(--item-bg);
-            color: var(--text-color);
-            border: 2px solid var(--result-color);
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
         .roll-controls {
             display: flex;
             align-items: center;
@@ -309,31 +433,14 @@
             text-align: center;
         }
 
-        .move-selected-btn {
-            padding: 6px 12px;
-            background: var(--item-bg);
-            color: var(--text-color);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 8px;
-            width: 100%;
-            font-size: 13px;
-        }
-
-        .data-io-container {
-            margin-top: 15px;
-            text-align: center;
-        }
-
         .io-button {
-            padding: 6px 12px;
+            padding: 5px 10px;
             background: var(--item-bg);
             color: var(--text-color);
             border: 1px solid var(--border-color);
             border-radius: 4px;
             cursor: pointer;
-            margin: 0 5px;
+            margin: 0 4px;
             font-size: 13px;
         }
 
@@ -351,81 +458,29 @@
             line-height: 24px;
         }
 
-        .buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            align-items: center;
-            margin-top: 10px;
-        }
-
-        .roll-button {
-            padding: 12px 30px;
-            font-size: 1.2em;
-            background-color: var(--start-button-bg);
-            color: #000000;
-            border: none;
-            font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .roll-button:hover {
-            background-color: var(--start-button-hover);
-            transform: translateY(-1px);
-        }
-
-        .reset-button {
-            padding: 8px 20px;
-            font-size: 0.9em;
-            background-color: transparent;
-            color: var(--text-color);
-            border: 1px solid var(--border-color);
-            opacity: 0.7;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .reset-button:hover {
-            opacity: 1;
-            border-color: var(--start-button-bg);
-        }
-
-        @media screen and (max-height: 800px) {
-            body {
-                font-size: 13px;
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 96%;
+                padding: 4px;
             }
             
-            .container {
-                padding: 5px;
+            .lists-container {
+                flex-direction: column;
+                gap: 5px;
             }
-
+            
+            .list-column {
+                width: calc(100% - 16px);
+            }
+            
             .result-container {
-                padding: 15px;
-                margin: 5px 0 15px 0;
+                width: calc(100% - 16px);
+                padding: 6px;
             }
-
+            
             #result {
-                font-size: 2.5em;
-                min-height: 80px;
-                margin: 10px 0;
-            }
-
-            .name-list {
-                min-height: 100px;
-                max-height: 200px;
-            }
-
-            .result-avatar {
-                width: 50px;
-                height: 50px;
-            }
-
-            .roll-button {
-                padding: 10px 25px;
+                font-size: 1.5em !important;
+                min-height: 40px;
             }
         }
     </style>
@@ -442,15 +497,16 @@
 
     <div class="container">
         <div class="title-container">
-            <h1>运营课摇人</h1>
-            <span class="version-tag">6.0 Ultra</span>
+            <div class="title-left">
+                <h1>运营课摇人</h1>
+                <span class="version-tag">6.0 Ultra</span>
+            </div>
+            <div class="date-container">
+                <span id="currentDate"></span>
+                <span id="festival" class="festival"></span>
+            </div>
         </div>
         
-        <div class="date-container">
-            <span id="currentDate"></span>
-            <span id="festival" class="festival"></span>
-        </div>
-
         <div class="result-container">
             <div id="result">
                 <img class="result-avatar" id="resultAvatar" src="" alt="">
@@ -470,12 +526,21 @@
                     <input type="text" class="add-name-input" id="newNameInput" placeholder="输入新名字">
                     <img id="avatarPreview" class="avatar-preview">
                     <div class="file-input-container">
-                        <button class="upload-btn">选择头像</button>
+                        <button class="upload-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 4a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0 014-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4z"/>
+                            </svg>
+                        </button>
                         <input type="file" id="avatarInput" accept="image/*">
                     </div>
-                    <button class="add-btn" onclick="addNewName()">添加</button>
+                    <button class="add-btn" onclick="addNewName()">➕</button>
                 </div>
-                <button class="move-selected-btn" onclick="moveSelectedToUsed()">移动选中项目到已抽取</button>
+                <button class="move-selected-btn" onclick="moveSelectedToUsed()">
+                    移动选中 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14m-7-7l7 7-7 7"/>
+                    </svg>
+                </button>
             </div>
             
             <div class="list-column">
